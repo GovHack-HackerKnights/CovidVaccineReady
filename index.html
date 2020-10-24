@@ -1,91 +1,620 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Covert Predictions</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    <link rel="stylesheet" href="/static/styles.css">
+    <title>HackerKnights</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
 
-</head>
+    <!-- Favicons -->
+    <link href="assets/img/favicon.ico" rel="icon" />
 
-<body>
-    <div id="main">
-        <header style="margin-bottom: 40px; background: #7286A0; color: white; padding: 50px;">
-            <h1 style="margin-bottom: 0px; text-align: center;">COVID-19 Vaccine Distribution Model</h1>
-            <p style="text-align: center;">By <span style="font-size: 20px">Hackerknights</span></p>
-        </header>
-        <p style="padding: 0 100px;">The project will provide data modelling for how to effectively distribute COVID-19 vaccines. This will
-            provide the Government with a tool to send out resources to the exact location targeting specific areas with
-            a specific amount of immunisation targets, allowing them to use their resources with utmost efficiency.
-            Vaccines will be limited because of the high demand that they will carry. Deciding on where and who will
-            need to be vaccinated to effectively stop the spread of the virus and to reach herd immunity.
-        </p>
-        <h3 style="padding: 0 100px; margin-top: 0.67em; margin-bottom: 0.5em">How to:</h3>
-        <ol>
-            <li style="background-color: #be6e46">1. Default figure: Vaccine for all months</li>
-            <li style="background-color: #CDE7B0">2. Select month from bottom to get a specific month</li>
-            <li style="background-color: #7286A0">3. Enter number of vaccine available</li>
-            <li style="background-color: #59594A; color: white">4. Piechart shows distribution on region based on available vaccines</li>
-        </p>
-        </ol>
-        
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
 
-        <div class='tableauPlaceholder' id='viz1597553217317' style='position: relative'>
-            <noscript>
-                <a href='#'>
-                    <img alt=' '
-                    src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;CovidVaccinesAustralia&#47;Dashboard1&#47;1_rss.png'
-                    style='border: none' />
-                </a>
-            </noscript>
-            <object class='tableauViz'  style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                <param name='embed_code_version' value='3' />
-                <param name='site_root' value='' />
-                <param name='name' value='CovidVaccinesAustralia&#47;Dashboard1' />
-                <param name='tabs' value='no' />
-                <param name='toolbar' value='yes' />
-                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;CovidVaccinesAustralia&#47;Dashboard1&#47;1.png' />
-                <param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' />
-                <param name='language' value='en' />
-            </object>
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet" />
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/owl.carousel/assets/owl.carousel.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet" />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+      <div class="container d-flex align-items-center">
+        <div class="logo mr-auto">
+          <h1 class="text-light">
+            <a href="index.html"><span>HackerKnights</span></a>
+          </h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
 
-        <h3 style="padding: 0 100px; margin-bottom: 0.5em">Background:</h3>
-        <p style="padding: 5px 100px;">This model takes into consideration COVID cases that have been confirmed and deaths per state over a time period to calculate the R naught value. These cases have been forecasted up to march 21 using multiple linear regression.</p>
-        <p style="padding: 5px 100px;">After calculating R naught found to be 2.5 on average. We calculated the number of vaccines needed to reach herd immunity for each state according to its population. The formula for Herd immunity: 1 / (1 - Rnaught) We have run this algorithm to our forecasted range of Mar 21.</p>
-        <p style="padding: 5px 100px;">If we get a limited number of vaccines, the algorithm calculates the optimal distribution of vaccines to take smaller steps towards herd immunity (no more a pandemic).</p>
+        <nav class="nav-menu d-none d-lg-block">
+          <ul>
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#about">Background</a></li>
+            <li><a href="#services">Data Story</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#features">DataSets</a></li>
+            <li class="get-started"><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+        <!-- .nav-menu -->
+      </div>
+    </header>
+    <!-- End Header -->
 
-        <br>
-        <div style="background-color: #848484; width: 100%; height: 3px; margin-bottom: 20px"></div>
-        <footer style="display: flex; margin-bottom: 5px; background: #7286A0; color: white; padding: 50px 100px">
-           <section style="flex: 1;">
-               <h3 style="margin-bottom: 0.5em">Our team:</h3>
-               <p>Afrida Tabassum</p>
-               <p>Jan Claasen</p>
-               <p>mahesh</p>
-               <p>Naga Aditya Gandam</p>
-               <p>Quang Hoang</p>
-               <p>Avery O'Callahan</p>
-               <p>Nazmul Kaonine</p>
-               <p>Prashant Ghimire</p>
-           </section>
-           <section style="flex: 1">
-               <img src="/static/govhack-logo.png">
-               <p>GovHack 2020 participation</p>
-           </section>
-        </footer>
-    </div>
+    <!-- ======= Hero Section ======= -->
+    <section id="home">
+      <div class="container">
+        <br />
+        <br />
+        <br />
+
+        <div class="row justify-content-center">
+          <div class="col-lg-1"></div>
+
+          <div class="col-lg-10" marginleft="30px!important">
+            <div class="tableauPlaceholder" id="viz1603528092412">
+              <noscript
+                ><a href="#"
+                  ><img
+                    alt=" "
+                    src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;CovidVaccinesAustralia&#47;Dashboard1&#47;1_rss.png"
+                    style="border: none" /></a></noscript
+              ><object class="tableauViz">
+                <param
+                  name="host_url"
+                  value="https%3A%2F%2Fpublic.tableau.com%2F"
+                />
+                <param name="embed_code_version" value="3" />
+                <param name="site_root" value="" />
+                <param
+                  name="name"
+                  value="CovidVaccinesAustralia&#47;Dashboard1"
+                />
+                <param name="tabs" value="no" />
+                <param name="toolbar" value="yes" />
+                <param
+                  name="static_image"
+                  value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;CovidVaccinesAustralia&#47;Dashboard1&#47;1.png"
+                />
+                <param name="animate_transition" value="yes" />
+                <param name="display_static_image" value="yes" />
+                <param name="display_spinner" value="yes" />
+                <param name="display_overlay" value="yes" />
+                <param name="display_count" value="yes" />
+                <param name="language" value="en-GB" />
+              </object>
+            </div>
+            <script type="text/javascript">
+              var divElement = document.getElementById("viz1603528092412");
+              var vizElement = divElement.getElementsByTagName("object")[0];
+              if (divElement.offsetWidth > 800) {
+                vizElement.style.width = "1000px";
+                vizElement.style.height = "827px";
+              } else if (divElement.offsetWidth > 500) {
+                vizElement.style.width = "1000px";
+                vizElement.style.height = "827px";
+              } else {
+                vizElement.style.width = "100%";
+                vizElement.style.height = "827px";
+              }
+              var scriptElement = document.createElement("script");
+              scriptElement.src =
+                "https://public.tableau.com/javascripts/api/viz_v1.js";
+              vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            </script>
+          </div>
+
+          <div class="col-lg-1"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div
+          class="image col-xl-2 d-flex align-items-stretch justify-content-center justify-content-xl-start"
+        ></div>
+
+        <div
+          class="col-xl-6 d-flex align-items-stretch pt-4 pt-xl-0"
+          data-aos="fade-left"
+          data-aos-delay="300"
+        >
+          <div class="content d-flex flex-column justify-content-center">
+            <div class="row">
+              <div class="col-md-6 d-md-flex align-items-md-stretch">
+                <div class="count-box">
+                  <i class="icofont-simple-smile"></i>
+                  <p>Default figure: Vaccine for all months</p>
+                </div>
+              </div>
+
+              <div class="col-md-6 d-md-flex align-items-md-stretch">
+                <div class="count-box">
+                  <i class="icofont-document-folder"></i>
+                  <p>Select month from bottom to get a specific month</p>
+                </div>
+              </div>
+
+              <div class="col-md-6 d-md-flex align-items-md-stretch">
+                <div class="count-box">
+                  <i class="icofont-clock-time"></i>
+                  <p>Enter number of vaccine available</p>
+                </div>
+              </div>
+
+              <div class="col-md-6 d-md-flex align-items-md-stretch">
+                <div class="count-box">
+                  <i class="icofont-award"></i>
+                  <p>
+                    Piechart shows distribution on region based on available
+                    vaccines
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End .content-->
+        </div>
+
+        <div
+          class="image col-xl-2 d-flex align-items-stretch justify-content-center justify-content-xl-start"
+        ></div>
+      </div>
+    </section>
+    <!-- End Hero -->
+
+    <main id="main">
+      <!-- ======= About Us Section ======= -->
+      <section id="about" class="about">
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <h2>COVID-19 Vaccine Distribution Model</h2>
+          </div>
+
+          <div class="row content">
+            <div class="col-lg-12" data-aos="fade-up" data-aos-delay="150">
+              <p>
+                Imagine, it’s December 2020. There are long winded queues in
+                front of the pharmacies and vaccine distribution centres. The
+                Australian government only has a very limited number of
+                vaccines. The population is desperate to return to normality and
+                the vaccine is the only key to achieving this. For the
+                government to reach the minimum requirement herd immunity needs
+                to be reached. With a population of 25 million and barely 15
+                million vaccines. How will the government succeed in effectively
+                distributing the vaccines?
+                <br />
+                <br />
+                Fortunately, a small team called the Hacker-Knights come to the
+                rescue.
+                <br />
+                <br />
+                A novel way of achieving herd immunity and a simple prediction
+                tool with intuitive visualisation filters, that will assist the
+                government in taking control of COVID-19 in the most efficient
+                manner.
+                <br />
+                <br />
+                The idea is to achieve below outcomes with the government data:
+              </p>
+              <ul>
+                <li>
+                  <i class="ri-check-double-line"></i> Forecast for the covid
+                  impact for future months with the existing covid factors (e.g:
+                  cases on daily basis, confirm, recovered, deaths and infection
+                  rate etc.)
+                </li>
+                <li>
+                  <i class="ri-check-double-line"></i> Predict the minimum
+                  number of vaccines required to achieve herd immunity of a
+                  particular region. We considered R-nought, a variable factor,
+                  as 2.2 (average according to available sources) hypothetically
+                  for the limitation of data and time constraint.
+                </li>
+                <li>
+                  <i class="ri-check-double-line"></i> Find out the optimal way
+                  of distributing available vaccines to the most affected
+                  regions based on multiple factors like business impacts,
+                  available distributed channels, social, economic conditions
+                  and also to achieve herd immunity across the region as fast as
+                  possible.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End About Us Section -->
+
+      <!-- ======= Services Section ======= -->
+      <section id="services" class="services">
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <h2>Data Story</h2>
+          </div>
+
+          <div class="row content">
+            <div class="col-lg-12" data-aos="fade-up" data-aos-delay="150">
+              <p>
+                The datasets used come from various sources including Australian
+                Bureau of Statistics, Github open source data and Australia
+                Population (2020) Worldometer. One of the major challenges has
+                been to extract precisely the most relevant data by combining
+                different unstructured datasets into a single effective
+                aggregated dataset that has been normalised. Having the monthly
+                statewise covid cases, deaths and population we extrapolated the
+                number of vaccines needed for each region and improved the
+                prediction efficiency using factors such as employment and
+                unemployment. An interactive visualisation web dashboard(shown
+                in the video) has been built for users.
+                <br />
+                <br />
+                This model takes into consideration covid cases that have been
+                confirmed and deaths per state over a time period to calculate
+                the R naught value. These cases have been forecasted upto march
+                21 using multiple linear regression.
+                <br />
+                <br />
+                After calculating R naught found to be 2.5 on average. We
+                calculated the number of vaccines needed to reach herd immunity
+                for each state according to its population. Formula for Herd
+                immunity: 1/(1-Rnaught) We have run this algorithm to our
+                forecasted range of Mar 21.
+                <br />
+                If we get limited number of vaccines, the algorithm calculates
+                the optimal distribution of vaccines to take smaller steps
+                towards herd immunity (no more a pandemic).
+                <br />
+                <br />
+                Future implementation could use more features(density, social
+                distance, house rents, food habits) to train a Neural Network
+                model for the weighted and variability factor to achieve the
+                real time R-naught more accurately to eradicate COVID-19.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Services Section -->
+
+      <!-- ======= Team Section ======= -->
+      <section id="team" class="team section-bg">
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <h2>Team</h2>
+            <p>Knights who served for the hack</p>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-2 col-md-6 d-flex align-items-stretch">
+              <div class="member" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-img">
+                  <img
+                    src="assets/img/team/team-1.jpg"
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <div class="social">
+                    <a href=""><i class="icofont-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>Nazmul</h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 d-flex align-items-stretch">
+              <div class="member" data-aos="fade-up" data-aos-delay="200">
+                <div class="member-img">
+                  <img
+                    src="assets/img/team/team-3.jpg"
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <div class="social">
+                    <a href=""><i class="icofont-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>Naga</h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 d-flex align-items-stretch">
+              <div class="member" data-aos="fade-up" data-aos-delay="300">
+                <div class="member-img">
+                  <img
+                    src="assets/img/team/team-3.jpg"
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <div class="social">
+                    <a href=""><i class="icofont-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>Mahesh</h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 d-flex align-items-stretch">
+              <div class="member" data-aos="fade-up" data-aos-delay="400">
+                <div class="member-img">
+                  <img
+                    src="assets/img/team/team-2.jpg"
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <div class="social">
+                    <a href=""><i class="icofont-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>Afrida</h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 d-flex align-items-stretch">
+              <div class="member" data-aos="fade-up" data-aos-delay="400">
+                <div class="member-img">
+                  <img
+                    src="assets/img/team/team-1.jpg"
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <div class="social">
+                    <a href=""><i class="icofont-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>Quang</h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 d-flex align-items-stretch">
+              <div class="member" data-aos="fade-up" data-aos-delay="400">
+                <div class="member-img">
+                  <img
+                    src="assets/img/team/team-4.jpg"
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <div class="social">
+                    <a href=""><i class="icofont-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>Jaan</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Team Section -->
+
+      
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Team DataSets</h2>
+          <p>Datasets that were used</p>
+        </div>
+
+          <div class="col-lg-12 col-md-12 mt-4">
+            <div class="icon-box">
+              <i class="ri-database-2-line" style="color: #47aeff;"></i>
+              <h3><a href="https://www.abs.gov.au/Employment-and-Unemployment">Australia employed and unemployed stats</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 mt-4">
+            <div class="icon-box">
+              <i class="ri-disc-line" style="color: #b20969;"></i>
+              <h3><a href="https://www.worldometers.info/world-population/australia-population/">Australia Demographics data and population rate</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 mt-4">
+            <div class="icon-box">
+              <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
+              <h3><a href="https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/3101.0Dec%202019?OpenDocument">Australia Demographics data</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 mt-4">
+            <div class="icon-box">
+              <i class="ri-bar-chart-box-line" style="color: #b20969;"></i>
+              <h3><a href="https://github.com/M3IT/COVID-19_Data">Covid 19 cases for Australia</a></h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Features Section -->
 
 
-    <script src="/static/index.js" type="module"></script>
-</body>
+      <!-- ======= F.A.Q Section ======= -->
+      <section id="faq" class="faq">
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <h2>Frequently Asked Questions</h2>
+          </div>
 
+          <div
+            class="row faq-item d-flex align-items-stretch"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="col-lg-5">
+              <i class="ri-question-line"></i>
+              <h4>Non consectetur a erat nam at lectus urna duis?</h4>
+            </div>
+            <div class="col-lg-7">
+              <p>
+                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id
+                volutpat lacus laoreet non curabitur gravida. Venenatis lectus
+                magna fringilla urna porttitor rhoncus dolor purus non.
+              </p>
+            </div>
+          </div>
+          <!-- End F.A.Q Item-->
 
+          <div
+            class="row faq-item d-flex align-items-stretch"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="col-lg-5">
+              <i class="ri-question-line"></i>
+              <h4>
+                Feugiat scelerisque varius morbi enim nunc faucibus a
+                pellentesque?
+              </h4>
+            </div>
+            <div class="col-lg-7">
+              <p>
+                Dolor sit amet consectetur adipiscing elit pellentesque habitant
+                morbi. Id interdum velit laoreet id donec ultrices. Fringilla
+                phasellus faucibus scelerisque eleifend donec pretium. Est
+                pellentesque elit ullamcorper dignissim.
+              </p>
+            </div>
+          </div>
+          <!-- End F.A.Q Item-->
+
+          <div
+            class="row faq-item d-flex align-items-stretch"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="col-lg-5">
+              <i class="ri-question-line"></i>
+              <h4>
+                Dolor sit amet consectetur adipiscing elit pellentesque habitant
+                morbi?
+              </h4>
+            </div>
+            <div class="col-lg-7">
+              <p>
+                Eleifend mi in nulla posuere sollicitudin aliquam ultrices
+                sagittis orci. Faucibus pulvinar elementum integer enim. Sem
+                nulla pharetra diam sit amet nisl suscipit. Rutrum tellus
+                pellentesque eu tincidunt. Lectus urna duis convallis convallis
+                tellus.
+              </p>
+            </div>
+          </div>
+          <!-- End F.A.Q Item-->
+
+          <div
+            class="row faq-item d-flex align-items-stretch"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div class="col-lg-5">
+              <i class="ri-question-line"></i>
+              <h4>
+                Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
+              </h4>
+            </div>
+            <div class="col-lg-7">
+              <p>
+                Aperiam itaque sit optio et deleniti eos nihil quidem cumque.
+                Voluptas dolorum accusantium sunt sit enim. Provident
+                consequuntur quam aut reiciendis qui rerum dolorem sit odio.
+                Repellat assumenda soluta sunt pariatur error doloribus fuga.
+              </p>
+            </div>
+          </div>
+          <!-- End F.A.Q Item-->
+
+          <div
+            class="row faq-item d-flex align-items-stretch"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            <div class="col-lg-5">
+              <i class="ri-question-line"></i>
+              <h4>
+                Tempus quam pellentesque nec nam aliquam sem et tortor
+                consequat?
+              </h4>
+            </div>
+            <div class="col-lg-7">
+              <p>
+                Molestie a iaculis at erat pellentesque adipiscing commodo.
+                Dignissim suspendisse in est ante in. Nunc vel risus commodo
+                viverra maecenas accumsan. Sit amet nisl suscipit adipiscing
+                bibendum est. Purus gravida quis blandit turpis cursus in
+              </p>
+            </div>
+          </div>
+          <!-- End F.A.Q Item-->
+        </div>
+      </section>
+      <!-- End F.A.Q Section -->
+    </main>
+    <!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+      <div class="container">
+        <div class="row d-flex align-items-center">
+          <div class="col-lg-6 text-lg-left text-center"></div>
+          <div class="col-lg-6">
+            <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
+              <a href="#intro" class="scrollto">Home</a>
+              <a href="#about" class="scrollto">About</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Use</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="assets/vendor/counterup/counterup.min.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
